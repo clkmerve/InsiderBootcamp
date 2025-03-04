@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery JSON </title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .highlight {
+            background-color: rgb(0, 174, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>JSON İşleme Örneği</h2>
+        <div class="section">
+            <div class="form-group">
+                <input type="text" id="studentName" placeholder="Öğrenci Adı">
+                <input type="text" id="studentClass" placeholder="Öğrenci Sınıfı">
+                <input type="number" id="studentGrade" placeholder="Not">
+                <input type="text" id="studentCourses" placeholder="Dersler (virgülle ayırın)">
+                <button id="convertToJson">Ekle</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>JSON Verisi Tablo Görünümü</h3>
+            <table id="jsonTable">
+                <thead>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Sınıf</th>
+                        <th>Not</th>
+                        <th>Dersler</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            const studentData = {
+                "students": [
+                    { "ad": "Ali", "sınıf": "10-B", "not": 85, "dersler": ["Matematik", "Fizik"] },
+                    { "ad": "Ayşe", "sınıf": "10-B", "not": 92, "dersler": ["Kimya", "Biyoloji"] },
+                    { "ad": "Mehmet", "sınıf": "10-B", "not": 78, "dersler": ["Tarih", "Coğrafya"] }
+                ]
+            };
+
+            function addStudent() {
+                $('#jsonTable tbody').empty();
+                studentData.students.forEach(function (student, index) {
+                    const row = `
+                        <tr>
+                            <td>${student.ad}</td>
+                            <td>${student.sınıf}</td>
+                            <td>${student.not}</td>
+                            <td>${student.dersler.join(", ")}</td>
+                            <td><button class="deleteBtn" data-index="${index}">Sil</button></td>
+                        </tr>
+                    `;
+                    $('#jsonTable tbody').append(row);
+                });
+
+
+            }
+
+            addStudent();
+
+            $('#convertToJson').click(function () {
+                const formData = {
+                    ad: $('#studentName').val().trim(),
+                    sınıf: $('#studentClass').val().trim(),
+                    not: parseInt($('#studentGrade').val().trim()),
+                    dersler: $('#studentCourses').val().split(',')
+                        .map(ders => ders.trim())
+                        .filter(ders => ders !== '')
+                };
+
+                if (formData.ad && !isNaN(formData.not) && formData.dersler.length > 0) {
+                    studentData.students.push(formData);
+                    addStudent();
+                    $('#studentName, #studentClass, #studentGrade, #studentCourses').val('');
+                } else {
+                    alert("Lütfen tüm alanları doldurunuz!");
+                }
+            });
+
+            $(document).on("click", ".deleteBtn", function () {
+                const index = $(this).data("index");
+                studentData.students.splice(index, 1);
+                addStudent();
+            });
+            $("#jsonTable tbody ").on("click", "tr", function () {
+                $(this).toggleClass("highlight");
+            });
+        });
+    </script>
+
+</body>
+
+</html>
