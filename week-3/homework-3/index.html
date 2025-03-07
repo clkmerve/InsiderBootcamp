@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Kartları</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+</head>
+
+<body>
+    <div class="profile-section">
+        <h3>Kullanıcı Bilgileri</h3>
+        <div class="profile-container"></div>
+    </div>
+    <div class="slider-section">
+        <h3>Slider Örneği</h3>
+        <div class="multiple-slider slider">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Kullanıcı Efektleri</h3>
+        <div class="button-container">
+            <button id="shakeBtn">Salla!</button>
+            <button id="bounceBtn">Zıplat!</button>
+            <button id="toggleBtn">Toggle</button>
+            <button id="fadeInBtn">Fade In</button>
+            <button id="fadeOutBtn">Fade Out</button>
+        </div>
+        <div id="userInfo">
+            <img id="randomImage" src="" alt="Rastgele Kullanıcı Resmi">
+            <p><strong>Adı:</strong> <span id="userName"></span></p>
+            <p><strong>Email:</strong> <span id="userEmail"></span></p>
+            <p><strong>Ülke:</strong> <span id="userCountry"></span></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
