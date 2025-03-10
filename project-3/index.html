@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#categories">Kategoriler</a>
+            <a href="#products">Ürünler</a>
+            <a href="#cart">Sepet</a>
+
+        </nav>
+    </header>
+
+    <section class="categories" id="categories">
+        <h3 class="category-text">Tüm Kategoriler</h3>
+        <div class="categories-slider"></div>
+    </section>
+
+    <section class="products" id="products">
+        <h3>Ürünler</h3>
+        <div class="products-container"></div>
+
+    </section>
+
+    <section class="cart" id="cart">
+        <h3 id="cart-title" style="display:none;">Sepet</h3>
+        <div id="cart-container">
+            <div class="cart-item"></div>
+        </div>
+    </section>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">Product Title</h2>
+            <p id="modal-description">Product Description</p>
+            <img id="modal-image" src="" alt="Product Image" />
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
